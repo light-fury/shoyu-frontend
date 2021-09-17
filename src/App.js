@@ -5,7 +5,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import { ListTitle, CalculateButton, RowContainer, TableContainer,
   ListHeader, HeaderTokenName, HeaderTokenCopy, Separator,
   HeaderTokenSymbol, ListRow, HeaderTokenAddress, SearchContainer,
-  InputDiv, LabelText, SearchContainerV3, AppContainer, LoadingContainer
+  InputDiv, LabelText, SearchContainerV3, AppContainer, LoadingContainer,
+  SideMenu, MainContainer, Header, WhiteButton
 } from './Component'
 import { tokenInfo, tokens } from './utils'
 import { useMetamask } from './useMetamask'
@@ -65,95 +66,96 @@ function App() {
 
   return (
     <AppContainer>
-      <TableContainer>
-        <RowContainer>
-          <ListTitle>Token</ListTitle>
-        </RowContainer>
-        <ListHeader>
-            <HeaderTokenName>Name</HeaderTokenName>
-            <HeaderTokenSymbol>Symbol</HeaderTokenSymbol>
-            <HeaderTokenAddress>Address</HeaderTokenAddress>
-            <HeaderTokenCopy />
-        </ListHeader>
-        <Separator />
-        {tokens.map(item => (
-          <ListRow key={item}>
-            <HeaderTokenName>{tokenInfo[item].name}</HeaderTokenName>
-            <HeaderTokenSymbol>{tokenInfo[item].symbol}</HeaderTokenSymbol>
-            <HeaderTokenAddress>{tokenInfo[item].address}</HeaderTokenAddress>
-            <HeaderTokenCopy onClick={() => copyTokenAddr(tokenInfo[item].address)}>
-              Copy Address
-            </HeaderTokenCopy>
-          </ListRow>
-        ))}
-      </TableContainer>
-      <TableContainer>
-        <RowContainer>
-          <SearchContainer>
-            <InputDiv
-              placeholder="First Token"
-              value={leftToken}
-              onChange={e => setLeftToken(e.target.value)}
-            />
-          </SearchContainer>
-          <SearchContainer>
-            <InputDiv
-              placeholder="Second Token"
-              value={rightToken}
-              onChange={e => setRightToken(e.target.value)}
-            />
-          </SearchContainer>
-        </RowContainer>
-        <LabelText>
-          Uniswap LP
-          <CalculateButton onClick={() => getUniswapLP()}>Calculate</CalculateButton>
-        </LabelText>
-        <RowContainer>
-          <SearchContainerV3>
-            <InputDiv
-              placeholder="First Token"
-              value={leftTokenLP}
-              contentEditable={false}
-            />
-          </SearchContainerV3>
-          <SearchContainerV3>
-            <InputDiv
-              placeholder="Second Token"
-              value={rightTokenLP}
-              contentEditable={false}
-            />
-          </SearchContainerV3>
-          <SearchContainerV3>
-            <InputDiv
-              placeholder="LP Token"
-              value={userLPAmt}
-              contentEditable={false}
-            />
-          </SearchContainerV3>
-        </RowContainer>
-      </TableContainer>
-      <TableContainer>
-        <RowContainer>
-          <SearchContainer>
-            <InputDiv
-              placeholder="LP Token"
-              value={lpTokenAmount}
-              type="number"
-              onChange={e => setLPTokenAmount(e.target.value)}
-            />
-          </SearchContainer>
-        </RowContainer>
-        <LabelText>
-          Sushiswap
-          <CalculateButton onClick={() => migrateSushi()}>Migrate</CalculateButton>
-        </LabelText>
-        <LabelText>
-          Sushiswap
-          <CalculateButton onClick={() => migrateWithPermitSushi()}>
-            Migrate With Permit
-          </CalculateButton>
-        </LabelText>
-      </TableContainer>
+      <SideMenu></SideMenu>
+      <MainContainer>
+        <Header />
+        <TableContainer>
+          <RowContainer>
+            <ListTitle>Token</ListTitle>
+          </RowContainer>
+          <Separator />
+          <ListHeader>
+              <HeaderTokenName>Name</HeaderTokenName>
+              <HeaderTokenSymbol>Symbol</HeaderTokenSymbol>
+              <HeaderTokenAddress>Address</HeaderTokenAddress>
+              <HeaderTokenCopy />
+          </ListHeader>
+          {tokens.map((item, index) => (
+            <ListRow key={item} odd={index % 2}>
+              <HeaderTokenName>{tokenInfo[item].name}</HeaderTokenName>
+              <HeaderTokenSymbol>{tokenInfo[item].symbol}</HeaderTokenSymbol>
+              <HeaderTokenAddress>{tokenInfo[item].address}</HeaderTokenAddress>
+              <HeaderTokenCopy onClick={() => copyTokenAddr(tokenInfo[item].address)}>
+                Copy Address
+              </HeaderTokenCopy>
+            </ListRow>
+          ))}
+        </TableContainer>
+        <TableContainer>
+          <RowContainer>
+            <ListTitle>Uniswap LP</ListTitle>
+            <WhiteButton onClick={() => getUniswapLP()}>Calculate</WhiteButton>
+          </RowContainer>
+          <Separator />
+          <RowContainer>
+            <SearchContainer>
+              <InputDiv
+                placeholder="First Token"
+                value={leftToken}
+                onChange={e => setLeftToken(e.target.value)}
+              />
+            </SearchContainer>
+            <SearchContainer>
+              <InputDiv
+                placeholder="Second Token"
+                value={rightToken}
+                onChange={e => setRightToken(e.target.value)}
+              />
+            </SearchContainer>
+          </RowContainer>
+          <RowContainer>
+            <SearchContainerV3>
+              <InputDiv
+                placeholder="First Token Amount"
+                value={leftTokenLP}
+                contentEditable={false}
+              />
+            </SearchContainerV3>
+            <SearchContainerV3>
+              <InputDiv
+                placeholder="Second Token Amount"
+                value={rightTokenLP}
+                contentEditable={false}
+              />
+            </SearchContainerV3>
+            <SearchContainerV3>
+              <InputDiv
+                placeholder="LP Token Amount"
+                value={userLPAmt}
+                contentEditable={false}
+              />
+            </SearchContainerV3>
+          </RowContainer>
+        </TableContainer>
+        <TableContainer>
+          <RowContainer>
+            <ListTitle>Sushi Migration</ListTitle>
+            <WhiteButton onClick={() => migrateSushi()}>Migrate</WhiteButton>
+            <WhiteButton onClick={() => migrateWithPermitSushi()}>Migrate With Permit</WhiteButton>
+          </RowContainer>
+          <Separator />
+          <RowContainer>
+            <SearchContainer>
+              <InputDiv
+                placeholder="LP Token"
+                value={lpTokenAmount}
+                type="number"
+                onChange={e => setLPTokenAmount(e.target.value)}
+              />
+            </SearchContainer>
+          </RowContainer>
+        </TableContainer>
+      </MainContainer>
       {isLoading && (
         <LoadingContainer>
           Loading...

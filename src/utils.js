@@ -99,17 +99,17 @@ export const tokenInfo = {
 
 export const Colors = {
     black: '#000000',
-    black1: '#212529',
+    black1: '#1A1F36',
     white: '#FFFFFF',
-    white1: '#F1F3F5',
-    white2: '#E9ECEF',
+    white1: '#F7FAFC',
+    white2: '#E3E8EE',
     boxShadow: '#DEE2E6',
-    gray1: '#868E96',
+    gray1: '#8792A2',
     gray2: '#495057',
     gray3: '#CED4DA',
     transparent: '#0000',
     blueButton: '#364FC7',
-    blueHeader: '#4C6EF5',
+    blueHeader: '#5A66DC',
     blueBorder: '#195DFB',
     red: '#F00',
     warning: '#FA5252'

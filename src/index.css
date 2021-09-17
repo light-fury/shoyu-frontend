@@ -1,37 +1,35 @@
 @font-face {
-  font-family: 'Poppins';
-  src: local('Poppins'), url(./asset/fonts/Poppins-Regular.ttf) format('opentype');
+  font-family: 'Inter';
+  src: local('Inter'), url(./asset/fonts/Inter-Regular.ttf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: 700;
-  src: local('Poppins'), url(./asset/fonts/Poppins-Bold.ttf) format('opentype');
+  src: local('Inter'), url(./asset/fonts/Inter-Bold.ttf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: 300;
-  src: local('Poppins'), url(./asset/fonts/Poppins-Light.ttf) format('opentype');
+  src: local('Inter'), url(./asset/fonts/Inter-Light.ttf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: 500;
-  src: local('Poppins'), url(./asset/fonts/Poppins-Medium.ttf) format('opentype');
+  src: local('Inter'), url(./asset/fonts/Inter-Medium.ttf) format('opentype');
 }
 
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Inter';
   font-weight: 100;
-  src: local('Poppins'), url(./asset/fonts/Poppins-Thin.ttf) format('opentype');
+  src: local('Inter'), url(./asset/fonts/Inter-Thin.ttf) format('opentype');
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Inter;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
