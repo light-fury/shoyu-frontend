@@ -2,10 +2,10 @@
 import { useState, useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { ListTitle, CalculateButton, RowContainer, TableContainer,
+import { ListTitle, RowContainer, TableContainer,
   ListHeader, HeaderTokenName, HeaderTokenCopy, Separator,
   HeaderTokenSymbol, ListRow, HeaderTokenAddress, SearchContainer,
-  InputDiv, LabelText, SearchContainerV3, AppContainer, LoadingContainer,
+  InputDiv, SearchContainerV3, AppContainer, LoadingContainer,
   SideMenu, MainContainer, Header, WhiteButton
 } from './Component'
 import { tokenInfo, tokens } from './utils'
