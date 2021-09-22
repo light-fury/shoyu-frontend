@@ -2,12 +2,6 @@
 import { useState, useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { ListTitle, RowContainer, TableContainer,
-  ListHeader, HeaderTokenName, HeaderTokenCopy, Separator,
-  HeaderTokenSymbol, ListRow, HeaderTokenAddress, SearchContainer,
-  InputDiv, SearchContainerV3, AppContainer, LoadingContainer,
-  SideMenu, MainContainer, Header, WhiteButton
-} from './Component'
 import { tokenInfo, tokens } from './utils'
 import { useMetamask } from './useMetamask'
 
@@ -65,101 +59,115 @@ function App() {
   }, [])
 
   return (
-    <AppContainer>
-      <SideMenu></SideMenu>
-      <MainContainer>
-        <Header />
-        <TableContainer>
-          <RowContainer>
-            <ListTitle>Token</ListTitle>
-          </RowContainer>
-          <Separator />
-          <ListHeader>
-              <HeaderTokenName>Name</HeaderTokenName>
-              <HeaderTokenSymbol>Symbol</HeaderTokenSymbol>
-              <HeaderTokenAddress>Address</HeaderTokenAddress>
-              <HeaderTokenCopy />
-          </ListHeader>
+    <div class="flex bg-white min-h-screen">
+      <div class="w-246 bg-white1 border-r-2 border-current" />
+      <div class="flex flex-1 flex-col">
+        <div class="h-94 bg-white border-b-2 border-current" />
+        <div class="max-w-full m-30-20 bg-white flex flex-col">
+          <div class="row-container">
+            <div class="list-title">
+              Token
+            </div>
+          </div>
+          <div class="bg-white2 h-2 m-17-60" />
+          <div class="table-header">
+            <div class="text-left flex-3 flex items-center">Name</div>
+            <div class="flex-2">Symbol</div>
+            <div class="flex-5">Address</div>
+            <div class="copy-button" />
+          </div>
           {tokens.map((item, index) => (
-            <ListRow key={item} odd={index % 2}>
-              <HeaderTokenName>{tokenInfo[item].name}</HeaderTokenName>
-              <HeaderTokenSymbol>{tokenInfo[item].symbol}</HeaderTokenSymbol>
-              <HeaderTokenAddress>{tokenInfo[item].address}</HeaderTokenAddress>
-              <HeaderTokenCopy onClick={() => copyTokenAddr(tokenInfo[item].address)}>
+            <div
+              key={item}
+              class={`table-row ${index % 2 ? "bg-white1" : "bg-white"}`}>
+              <div class="text-left flex-3 flex items-center">{tokenInfo[item].name}</div>
+              <div class="flex-2">{tokenInfo[item].symbol}</div>
+              <div class="flex-5">{tokenInfo[item].address}</div>
+              <div class="copy-button" onClick={() => copyTokenAddr(tokenInfo[item].address)}>
                 Copy Address
-              </HeaderTokenCopy>
-            </ListRow>
+              </div>
+            </div>
           ))}
-        </TableContainer>
-        <TableContainer>
-          <RowContainer>
-            <ListTitle>Uniswap LP</ListTitle>
-            <WhiteButton onClick={() => getUniswapLP()}>Calculate</WhiteButton>
-          </RowContainer>
-          <Separator />
-          <RowContainer>
-            <SearchContainer>
-              <InputDiv
+        </div>
+        <div class="max-w-full m-30-20 bg-white flex flex-col">
+          <div class="row-container">
+            <div class="list-title">
+              Uniswap LP
+            </div>
+            <div class="white-button bg-white text-16 " onClick={() => getUniswapLP()}>Calculate</div>
+          </div>
+          <div class="bg-white2 h-2 m-17-60" />
+          <div class="row-container">
+            <div class="search-container">
+              <input
+                class="input-div"
                 placeholder="First Token"
                 value={leftToken}
                 onChange={e => setLeftToken(e.target.value)}
               />
-            </SearchContainer>
-            <SearchContainer>
-              <InputDiv
+            </div>
+            <div class="search-container">
+              <input
+                class="input-div"
                 placeholder="Second Token"
                 value={rightToken}
                 onChange={e => setRightToken(e.target.value)}
               />
-            </SearchContainer>
-          </RowContainer>
-          <RowContainer>
-            <SearchContainerV3>
-              <InputDiv
+            </div>
+          </div>
+          <div class="row-container">
+            <div class="search-container-v3">
+              <input
+                class="input-div"
                 placeholder="First Token Amount"
                 value={leftTokenLP}
                 contentEditable={false}
               />
-            </SearchContainerV3>
-            <SearchContainerV3>
-              <InputDiv
+            </div>
+            <div class="search-container-v3">
+              <input
+                class="input-div"
                 placeholder="Second Token Amount"
                 value={rightTokenLP}
                 contentEditable={false}
               />
-            </SearchContainerV3>
-            <SearchContainerV3>
-              <InputDiv
+            </div>
+            <div class="search-container-v3">
+              <input
+                class="input-div"
                 placeholder="LP Token Amount"
                 value={userLPAmt}
                 contentEditable={false}
               />
-            </SearchContainerV3>
-          </RowContainer>
-        </TableContainer>
-        <TableContainer>
-          <RowContainer>
-            <ListTitle>Sushi Migration</ListTitle>
-            <WhiteButton onClick={() => migrateSushi()}>Migrate</WhiteButton>
-            <WhiteButton onClick={() => migrateWithPermitSushi()}>Migrate With Permit</WhiteButton>
-          </RowContainer>
-          <Separator />
-          <RowContainer>
-            <SearchContainer>
-              <InputDiv
+            </div>
+          </div>
+        </div>
+        <div class="max-w-full m-30-20 bg-white flex flex-col">
+          <div class="row-container">
+            <div class="list-title">
+              Sushi Migration
+            </div>
+            <div class="white-button bg-white text-16 " onClick={() => migrateSushi()}>Migrate</div>
+            <div class="white-button bg-white text-16 " onClick={() => migrateWithPermitSushi()}>Migrate With Permit</div>
+          </div>
+          <div class="bg-white2 h-2 m-17-60" />
+          <div class="row-container">
+            <div class="search-container">
+              <input
+                class="input-div"
                 placeholder="LP Token"
                 value={lpTokenAmount}
                 type="number"
                 onChange={e => setLPTokenAmount(e.target.value)}
               />
-            </SearchContainer>
-          </RowContainer>
-        </TableContainer>
-      </MainContainer>
+            </div>
+          </div>
+        </div>
+      </div>
       {isLoading && (
-        <LoadingContainer>
+        <div class="fixed inset-0 flex justify-center items-center text-2xl text-red-600">
           Loading...
-        </LoadingContainer>
+        </div>
       )}
       <ToastContainer
         position="top-right"
@@ -172,7 +180,7 @@ function App() {
         draggable
         pauseOnHover
       />
-    </AppContainer>
+    </div>
   )
 }
 

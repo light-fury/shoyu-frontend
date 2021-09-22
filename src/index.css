@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: 'Inter';
   src: local('Inter'), url(./asset/fonts/Inter-Regular.ttf) format('opentype');
@@ -35,6 +39,83 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: Inter;
+}
+
+@layer utilities {
+  .w-246 {
+    width: 246px;
+  }
+  .h-94 {
+    height: 94px;
+  }
+  .h-2 {
+    height: 2px;
+  }
+  .h-58 {
+    height: 58px;
+  }
+  .p-0-60 {
+    padding: 0 60px;
+  }
+  .p-10 {
+    padding: 10px;
+  }
+  .h-40 {
+    height: 40px;
+  }
+  .m-30-20 {
+    margin: 30px 0 20px;
+  }
+  .m-17-60 {
+    margin: 17px 60px 0;
+  }
+  .m-0-60 {
+    margin: 0 60px;
+  }
+  .m-0-60-12 {
+    margin: 0 60px 12px;
+  }
+  .shadow-1-4 {
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  .m-l-20 {
+    margin-left: 20px;
+  }
+}
+@layer components {
+  .row-container {
+    @apply flex items-center justify-between m-0-60;
+  }
+  .white-button {
+    @apply h-40 flex justify-center items-center box-border p-10 shadow-1-4 rounded-5 leading-tight text-black1 cursor-pointer m-l-20;
+  }
+  .search-container {
+    @apply flex rounded-4 bg-white2;
+    height: 36px;
+    width: calc(50% - 10px);
+    margin: 12px 0 0;
+  }
+  .search-container-v3 {
+    @apply flex rounded-4 bg-white2;
+    height: 36px;
+    width: calc(33.33% - 13.33px);
+    margin: 12px 0 0;
+  }
+  .input-div {
+    @apply text-gray1 font-medium bg-transparent leading-normal text-13 flex-1 border-none outline-none;
+    margin: 8px 5px 8px 15px;
+  }
+  .list-title {
+    @apply text-32 font-bold text-left text-black leading-tight flex-1;
+  }
+  .table-row {
+    @apply p-0-60 h-40 flex items-center text-center text-black1 text-16 leading-normal relative;
+  }
+  .copy-button {
+    @apply flex-2 text-blueHeader text-16 font-normal leading-tight text-right underline cursor-pointer;
+  }
+  .table-header {
+    @apply m-0-60-12 h-58 flex items-center text-gray1 text-16 leading-tight text-center font-normal;
+  }
 }
