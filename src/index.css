@@ -109,7 +109,7 @@ code {
   .list-title {
     @apply text-32 font-bold text-left text-black leading-tight flex-1;
   }
-  .table-row {
+  .table-row-container {
     @apply p-0-60 h-40 flex items-center text-center text-black1 text-16 leading-normal relative;
   }
   .copy-button {

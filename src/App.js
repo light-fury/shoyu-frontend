@@ -79,7 +79,7 @@ function App() {
           {tokens.map((item, index) => (
             <div
               key={item}
-              class={`table-row ${index % 2 ? "bg-white1" : "bg-white"}`}>
+              class={`table-row-container ${index % 2 ? "bg-white1" : "bg-white"}`}>
               <div class="text-left flex-3 flex items-center">{tokenInfo[item].name}</div>
               <div class="flex-2">{tokenInfo[item].symbol}</div>
               <div class="flex-5">{tokenInfo[item].address}</div>
